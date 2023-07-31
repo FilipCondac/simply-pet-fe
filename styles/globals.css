@@ -5,7 +5,42 @@
 /* create component class */
 
 @layer components {
-  .button {
-    @apply p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none;
+  .switch {
+    @apply relative inline-block align-middle;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    @apply opacity-0 w-0 h-0;
+  }
+
+  .slider {
+    @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 transition-all rounded-full;
+  }
+
+  .slider:before {
+    @apply absolute bg-white transition-all rounded-full;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+  }
+
+  .switch input:checked + .slider {
+    @apply bg-blue-600;
+  }
+
+  .switch input:focus + .slider {
+    @apply ring-2 ring-blue-600;
+  }
+
+  .switch input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .dot {
+    transition: all 0.3s ease-in-out;
   }
 }

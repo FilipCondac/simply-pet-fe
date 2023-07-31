@@ -1,5 +1,5 @@
-import "tailwindcss/tailwind.css";
-// import { Inter } from 'next/font/google'
+// import "tailwindcss/tailwind.css";
+import "../../styles/globals.css";
 import Navbar from "./components/Navbar";
 import AuthProvider from "./context/AuthProvider";
 import React from "react";
@@ -13,8 +13,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <main className="flex justify-center items-start p-6 min-h-screen">
-            <Navbar />
+          <main className="flex flex-col justify-center items-start min-h-screen">
             {children}
           </main>
         </AuthProvider>

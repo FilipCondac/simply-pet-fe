@@ -15,19 +15,16 @@ export const options: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const res = await fetch("http://localhost:8000/api/routes", {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        });
+        const res = await fetch(
+          `${process.env.BASE_API_URL}/verifyUser` as string,
+          {
+            method: "POST",
+            body: credentials ? JSON.stringify({ credentials }) : null,
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         const user = await res.json();
 
-        // // If no error and we have user data, return it
-        // if (res.ok && user) {
-        //   return user
-        // }
-        // // Return null if user data could not be retrieved
-        // return null
         if (
           credentials?.username === user.name &&
           credentials?.password === user.password
