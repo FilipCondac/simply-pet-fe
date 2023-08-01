@@ -1,20 +1,23 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import { registerUser } from "../util/registerUser";
+import { User, Vet } from "../types/types";
 
 export default function Register() {
   const [isVet, setIsVet] = React.useState(false);
 
-  const [userDetails, setUserDetails] = useState({
+  const [userDetails, setUserDetails] = useState<User>({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     phoneNumber: "",
     address: "",
+    petIDs: [],
   });
 
-  const [vetDetails, setVetDetails] = useState({
+  const [vetDetails, setVetDetails] = useState<Vet>({
     firstName: "",
     lastName: "",
     username: "",
@@ -25,6 +28,17 @@ export default function Register() {
     clinicAddress: "",
     clinicPhoneNumber: "",
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isVet) {
+      const res = await registerUser(vetDetails, true);
+      console.log(res);
+    } else {
+      const res = await registerUser(userDetails, false);
+      console.log(res);
+    }
+  };
 
   return (
     <div className="flex-col w-full min-h-screen ">
@@ -65,7 +79,7 @@ export default function Register() {
         </div>
         {/* Toggle End */}
         {/* Form */}
-        <form className="flex flex-col gap-4 w-3/12">
+        <form className="flex flex-col gap-4 w-3/12" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <label
@@ -151,7 +165,10 @@ export default function Register() {
                 value={isVet ? vetDetails.password : userDetails.password}
                 onChange={(e) =>
                   isVet
-                    ? setVetDetails({ ...vetDetails, password: e.target.value })
+                    ? setVetDetails({
+                        ...vetDetails,
+                        password: e.target.value,
+                      })
                     : setUserDetails({
                         ...userDetails,
                         password: e.target.value,

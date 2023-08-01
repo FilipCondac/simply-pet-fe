@@ -3,8 +3,8 @@ import LoginButton from "./LoginButton";
 
 export default function Navbar() {
   return (
-    <div className="flex">
+    <nav className="flex-col flex top-0 z-50">
       <LoginButton />
-    </div>
+    </nav>
   );
 }

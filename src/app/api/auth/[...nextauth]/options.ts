@@ -11,7 +11,11 @@ export const options: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        email: {
+          label: "email",
+          type: "text",
+          placeholder: "jsmith@gmail.com",
+        },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
@@ -24,19 +28,20 @@ export const options: NextAuthOptions = {
           }
         );
         const user = await res.json();
+        console.log("user", user);
 
-        if (
-          credentials?.username === user.name &&
-          credentials?.password === user.password
-        ) {
+        if (res.status === 200) {
+          console.log("Credentials valid");
           return user;
         } else {
+          console.log("Invalid credentials");
           return null;
         }
       },
     }),
   ],
   // pages: {
-  //   newUser: "/auth/newUser",
+  //   // newUser: "/auth/newUser",
+  //   signIn: "/signin",
   // },
 };

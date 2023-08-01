@@ -13,7 +13,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <main className="flex flex-col justify-center items-start min-h-screen">
+          <main className="flex flex-col justify-center min-h-screen">
+            <Navbar />
             {children}
           </main>
         </AuthProvider>
