@@ -1,7 +1,9 @@
-# React + Tailwind + Typescript + Vite Template 🧨
+#Simply Pet (WIP) 🧨
 
-Does exactly what it says on the tin.
+Typescript, React, NextJS 13.4, TailwindCSS
 
-Some fancy animations included in `tailwind.config.cjs`.
+This website was initially created by a colleague and I in University. This project was proposed as a business model with stakeholders identified. We have decided to recreate this project and revamp it with better tech, code quality and also better UI/UX!
 
-💩
+This project helped me learn NextJS 13.4 new layout and data fetching and also Next-Auth!
+
+Back-End can be found here at: https://github.com/FilipCondac/simply-pet-be
