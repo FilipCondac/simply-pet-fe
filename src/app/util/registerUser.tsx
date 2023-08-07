@@ -6,6 +6,7 @@ export async function registerUser(data: User | Vet, isVet: boolean) {
     if (isVet) {
       const url: string = "http://localhost:8000/api/routes/registerVet";
       const response = await axios.post(url, data);
+      console.log(response.data);
       return response.data;
     } else {
       const url: string = "http://localhost:8000/api/routes/registerUser";

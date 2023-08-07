@@ -13,7 +13,7 @@ export default async function Home() {
       {session ? (
         <div>
           <UserCard user={session?.user} pagetype={"Home"} />
-          {session?.user?.name} {session?.user?.email} {session?.user?.image}
+          {session?.user.}
         </div>
       ) : (
         <h1 className="text-5xl">You Shall Not Pass!</h1>

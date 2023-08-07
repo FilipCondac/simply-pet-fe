@@ -28,10 +28,9 @@ export const options: NextAuthOptions = {
           }
         );
         const user = await res.json();
-        console.log("user", user);
 
         if (res.status === 200) {
-          console.log("Credentials valid");
+          console.log("user", user);
           return user;
         } else {
           console.log("Invalid credentials");
