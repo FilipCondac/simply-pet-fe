@@ -1,6 +1,5 @@
 import { options } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
-import UserCard from "./components/UserCard";
 import React from "react";
 import axios from "axios";
 
@@ -11,10 +10,7 @@ export default async function Home() {
   return (
     <div className="flex-col">
       {session ? (
-        <div>
-          <UserCard user={session?.user} pagetype={"Home"} />
-          {session?.user.}
-        </div>
+        <div>{session?.user.email}</div>
       ) : (
         <h1 className="text-5xl">You Shall Not Pass!</h1>
       )}
