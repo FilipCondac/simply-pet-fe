@@ -3,22 +3,19 @@ import React from "react";
 
 export default function PageLinks() {
   return (
-    <section className="flex ml-auto">
-      <Link href="/" className="mx-5">
-        Home
-      </Link>
-      <Link href="/" className="mx-5">
-        {" "}
-        My Pets{" "}
-      </Link>
-      <Link href="/" className="mx-5">
-        {" "}
-        Appointments{" "}
-      </Link>
-      <Link href="/" className="mx-5">
-        {" "}
-        About{" "}
-      </Link>
-    </section>
+    <ul className="flex ml-auto my-auto">
+      <li className="mx-5">
+        <Link href="/">Home</Link>
+      </li>
+      <li className="mx-5">
+        <Link href="/">My Pets</Link>
+      </li>
+      <li className="mx-5">
+        <Link href="/">Appointments</Link>
+      </li>
+      <li className="mx-5">
+        <Link href="/">About</Link>
+      </li>
+    </ul>
   );
 }

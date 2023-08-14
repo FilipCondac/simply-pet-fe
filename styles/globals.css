@@ -11,6 +11,43 @@
     height: 34px;
   }
 
+  .bg-section {
+    background-image: url("/dashboardBackground.jpeg");
+    background-size: cover; /* Adjust this if needed */
+    background-position: center 60%;
+    background-repeat: no-repeat;
+    position: relative; /* Sets the context for the absolutely positioned pseudo-element */
+    /* Add shadow to the right */
+  }
+
+  .bg-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    opacity: 0.5; /* Adjust this to change the level of opacity */
+  }
+
+  .bg-section::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -10%;
+    right: -10%; /* Move the pseudo-element slightly to the right to ensure it fully covers the right side */
+    bottom: -20%;
+    width: 20%; /* Adjust to determine the width of the transition */
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 1)
+    );
+    filter: blur(10px); /* Adjust to get the desired blur effect */
+    pointer-events: none; /* Ensures the pseudo-element doesn't interfere with user interaction */
+  }
+
   .switch input {
     @apply opacity-0 w-0 h-0;
   }

@@ -15,7 +15,11 @@ module.exports = {
         secondary: "#00B4D8",
         tertiary: "#90E0EF",
       },
+      fontFamily: {
+        libre: ["Libre Franklin", "sans-serif"],
+      },
     },
+
+    plugins: [],
   },
-  plugins: [],
 };
