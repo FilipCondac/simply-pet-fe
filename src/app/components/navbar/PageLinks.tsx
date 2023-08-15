@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function PageLinks() {
+export default function PageLinks(): React.ReactElement {
   return (
     <ul className="flex ml-auto my-auto">
       <li className="mx-5">

@@ -7,8 +7,9 @@ import { options } from "../../api/auth/[...nextauth]/options";
 import SignupButton from "./UI/SignupButton";
 import Link from "next/link";
 
-export default async function Navbar() {
+export default async function Navbar(): Promise<React.ReactElement> {
   const session = await getServerSession(options);
+  console.log(session);
 
   return (
     <nav className="flex bg-gradient-to-r from-primary to-secondary fixed top-0 w-full z-50 shadow-lg ">

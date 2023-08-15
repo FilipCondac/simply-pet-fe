@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function TopSection() {
+export default function TopSection(): React.ReactElement {
   return (
-    <section className="flex w-full h-96 mt-12">
+    <section className="flex w-full h-[60vh] mt-12">
       <span className="bg-section w-7/12 h-full"></span>
-      <div className="flex flex-col text-black w-1/2 mt-5 z-10 p-8">
+      <div className="flex flex-col text-black w-1/2 mt-5 z-10 p-8 mr-10">
         <h2 className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
           On-demand vet care, 24/7.
         </h2>
