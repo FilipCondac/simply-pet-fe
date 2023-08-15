@@ -2,22 +2,33 @@
 import React, { useState } from "react";
 import FormWrapper from "./FormWrapper";
 
-export default function MedicalHistoryForm() {
-  const [medicalHistory, setMedicalHistory] = useState([
-    { date: "", description: "", treatment: "" },
-  ]);
+type MedicalEntry = {
+  date: string;
+  description: string;
+  treatment: string;
+};
 
-  const handleInputChange = (index, event) => {
+type MedicalHistoryProps = {
+  medicalHistory: MedicalEntry[];
+  updateMedicalHistory: (history: MedicalEntry[]) => void;
+};
+
+export default function PetMedicalForm({
+  medicalHistory,
+  updateMedicalHistory,
+}: MedicalHistoryProps) {
+  const handleInputChange = (index: number, event: any) => {
     const values = [...medicalHistory];
     values[index][event.target.name] = event.target.value;
-    setMedicalHistory(values);
+    updateMedicalHistory(values);
   };
 
   const handleAddFields = () => {
-    setMedicalHistory([
+    const values = [
       ...medicalHistory,
       { date: "", description: "", treatment: "" },
-    ]);
+    ];
+    updateMedicalHistory(values);
   };
 
   return (
@@ -25,7 +36,7 @@ export default function MedicalHistoryForm() {
       <div>
         {medicalHistory.map((entry, index) => (
           <div key={index} className="border border-black mb-5 p-2">
-            <label className="">Date:</label>
+            <label>Date:</label>
             <input
               type="date"
               name="date"
@@ -53,7 +64,6 @@ export default function MedicalHistoryForm() {
           </div>
         ))}
       </div>
-
       <button type="button" onClick={handleAddFields}>
         Add another entry
       </button>

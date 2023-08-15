@@ -1,7 +1,18 @@
 import React from "react";
 import FormWrapper from "./FormWrapper";
 
-export default function PetVetDetailsForm(): React.ReactElement {
+type VetData = {
+  vetID: string;
+};
+
+type VetFormPorps = VetData & {
+  updateFields: (fields: Partial<VetData>) => void;
+};
+
+export default function PetVetDetailsForm({
+  vetID,
+  updateFields,
+}: VetFormPorps): React.ReactElement {
   return (
     <FormWrapper title="Veterinary Practitioner Details">
       <label className="font-semibold" htmlFor="vetName">
@@ -9,6 +20,7 @@ export default function PetVetDetailsForm(): React.ReactElement {
       </label>
       <input
         className="border border-black mb-2"
+        placeholder="Dr. Smith"
         type="text"
         id="vetName"
         name="vetName"
@@ -18,8 +30,10 @@ export default function PetVetDetailsForm(): React.ReactElement {
       </label>
       <input
         className="border border-black mb-2"
+        placeholder="#415135"
         type="text"
         id="vetID"
+        onChange={(e) => updateFields({ vetID: e.target.value })}
         name="vetID"
       />
     </FormWrapper>
