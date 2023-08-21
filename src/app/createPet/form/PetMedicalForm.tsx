@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import FormWrapper from "./FormWrapper";
 
 type MedicalEntry = {
@@ -17,7 +17,12 @@ export default function PetMedicalForm({
   medicalHistory,
   updateMedicalHistory,
 }: MedicalHistoryProps) {
-  const handleInputChange = (index: number, event: any) => {
+  const handleInputChange = (
+    index: number,
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const values = [...medicalHistory];
     values[index][event.target.name] = event.target.value;
     updateMedicalHistory(values);

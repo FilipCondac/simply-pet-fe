@@ -2,9 +2,9 @@
 "use client";
 import React, { FormEvent, useEffect, useState } from "react";
 import { useMultistepForm } from "../util/useMultistepForm";
-import PetDetailsForm from "./PetDetailsForm";
-import PetMedicalForm from "./PetMedicalForm";
-import PetVetDetailsForm from "./PetVetDetailsForm";
+import PetDetailsForm from "./form/PetDetailsForm";
+import PetMedicalForm from "./form/PetMedicalForm";
+import PetVetDetailsForm from "./form/PetVetDetailsForm";
 
 type FormData = {
   name: string;
@@ -52,7 +52,7 @@ export default function CreatePet(): React.ReactElement {
   useEffect(() => {
     async function fetchEmail() {
       try {
-        const response = await fetch("createPet/api");
+        const response = await fetch("/api/user/getUserEmail");
         if (response.ok) {
           const userData = await response.json();
           data.userID = userData.email;
@@ -88,7 +88,18 @@ export default function CreatePet(): React.ReactElement {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!isLastStep) return next();
-    alert(JSON.stringify(data, null, 2));
+
+    try {
+      fetch("/api/createPet", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.error("An error occurred while creating the pet:", error);
+    }
   };
 
   return (

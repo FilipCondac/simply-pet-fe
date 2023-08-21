@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { FormEvent } from "react";
 import { useState } from "react";
 import { registerUser } from "../util/registerUser";
 import { User, Vet } from "../types/types";
@@ -29,7 +29,7 @@ export default function Register() {
     clinicPhoneNumber: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (isVet) {
       const res = await registerUser(vetDetails, true);

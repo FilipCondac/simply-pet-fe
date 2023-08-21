@@ -1,4 +1,4 @@
-import { options } from "../../api/auth/[...nextauth]/options";
+import { options } from "../../auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
 
@@ -12,7 +12,7 @@ export async function GET() {
 
     // In case there's no session or email
     return NextResponse.json({ email: "" });
-  } catch (error) {
-    return NextResponse.json({ error: error.message });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: error });
   }
 }
