@@ -31,6 +31,13 @@ export default function PetMedicalForm({
     updateMedicalHistory(values);
   };
 
+  const handleRemoveFields = () => {
+    const values = [...medicalHistory];
+    values.pop();
+
+    updateMedicalHistory(values);
+  };
+
   return (
     <FormWrapper title="Medical History">
       <div>
@@ -66,6 +73,9 @@ export default function PetMedicalForm({
       </div>
       <button type="button" onClick={handleAddFields}>
         Add another entry
+      </button>
+      <button type="button" onClick={handleRemoveFields}>
+        Remove last entry
       </button>
     </FormWrapper>
   );

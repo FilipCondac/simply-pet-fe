@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
-import React, { FormEvent, useState } from "react";
-// import { options } from "../api/auth/[...nextauth]/options";
-// import { getServerSession } from "next-auth/next";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useMultistepForm } from "../util/useMultistepForm";
 import PetDetailsForm from "./PetDetailsForm";
 import PetMedicalForm from "./PetMedicalForm";
@@ -50,6 +48,24 @@ type MedicalEntry = {
 
 export default function CreatePet(): React.ReactElement {
   const [data, setData] = useState(INITIAL_DATA);
+
+  useEffect(() => {
+    async function fetchEmail() {
+      try {
+        const response = await fetch("createPet/api");
+        if (response.ok) {
+          const userData = await response.json();
+          data.userID = userData.email;
+        } else {
+          console.error("Failed to fetch email.");
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching the email:", error);
+      }
+    }
+
+    fetchEmail();
+  }, []);
 
   const updateFields = (fields: Partial<FormData>) => {
     setData((prev) => ({ ...prev, ...fields }));
