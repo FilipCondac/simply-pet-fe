@@ -5,6 +5,8 @@ import { useMultistepForm } from "../util/useMultistepForm";
 import PetDetailsForm from "./form/PetDetailsForm";
 import PetMedicalForm from "./form/PetMedicalForm";
 import PetVetDetailsForm from "./form/PetVetDetailsForm";
+import { NextResponse } from "next/server";
+import { redirect } from "next/dist/server/api-utils";
 
 type FormData = {
   name: string;
@@ -95,7 +97,7 @@ export default function CreatePet(): React.ReactElement {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ data }),
       });
     } catch (error) {
       console.error("An error occurred while creating the pet:", error);
