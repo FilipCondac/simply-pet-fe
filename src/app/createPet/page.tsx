@@ -2,11 +2,9 @@
 "use client";
 import React, { FormEvent, useEffect, useState } from "react";
 import { useMultistepForm } from "../util/useMultistepForm";
-import PetDetailsForm from "./form/PetDetailsForm";
-import PetMedicalForm from "./form/PetMedicalForm";
-import PetVetDetailsForm from "./form/PetVetDetailsForm";
-import { NextResponse } from "next/server";
-import { redirect } from "next/dist/server/api-utils";
+import PetDetailsForm from "./components/form/PetDetailsForm";
+import PetMedicalForm from "./components/form/PetMedicalForm";
+import PetVetDetailsForm from "./components/form/PetVetDetailsForm";
 
 type FormData = {
   name: string;
@@ -92,7 +90,7 @@ export default function CreatePet(): React.ReactElement {
     if (!isLastStep) return next();
 
     try {
-      fetch("/api/createPet", {
+      fetch("/createPet/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

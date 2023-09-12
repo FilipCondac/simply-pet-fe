@@ -8,7 +8,7 @@ export default function PageLinks(): React.ReactElement {
         <Link href="/">Home</Link>
       </li>
       <li className="mx-5">
-        <Link href="/">My Pets</Link>
+        <Link href="/viewPets">My Pets</Link>
       </li>
       <li className="mx-5">
         <Link href="/">Appointments</Link>

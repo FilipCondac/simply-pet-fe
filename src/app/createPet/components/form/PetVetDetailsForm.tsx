@@ -10,7 +10,6 @@ type VetFormPorps = VetData & {
 };
 
 export default function PetVetDetailsForm({
-  vetID,
   updateFields,
 }: VetFormPorps): React.ReactElement {
   return (
