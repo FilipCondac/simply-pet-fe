@@ -26,7 +26,7 @@ type PetListProps = {
 export default function PetList({ petData }: PetListProps): React.ReactElement {
   const handleDelete = async (id: string) => {
     try {
-      const res = await fetch(`/viewPets/api/${id}`, {
+      const res = await fetch(`/api/viewPets/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {

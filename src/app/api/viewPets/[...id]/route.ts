@@ -1,16 +1,16 @@
-// import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import Pet from "../../../../../models/pet";
 
-// export async function DELETE(req: NextRequest) {
-//   const pathname = req.nextUrl.pathname.split("/");
-//   const id = pathname[pathname.length - 1];
+export async function DELETE(req: NextRequest) {
+  const pathname = req.nextUrl.pathname.split("/");
+  const id = pathname[pathname.length - 1];
 
-//   try {
-//     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_BASE_API_URL}/deletePet`,
-//       {
-//         method: "DELETE",
-//         body: JSON.stringify({ id }),
-//         headers: { "Content-Type": "application/json" },
-
-//   }
-//     );
+  try {
+    await Pet.findByIdAndDelete(id);
+    const absoluteUrl = new URL("/viewPets", process.env.NEXT_PUBLIC_BASE_URL)
+      .href;
+    return NextResponse.redirect(absoluteUrl);
+  } catch (error: unknown) {
+    console.log("Error deleting data", error);
+  }
+}
