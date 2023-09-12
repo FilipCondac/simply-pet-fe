@@ -20,15 +20,14 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const res = await fetch(
-          `${process.env.BASE_API_URL}/verifyUser` as string,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/verifyUser`,
           {
             method: "POST",
-            body: credentials ? JSON.stringify({ credentials }) : null,
+            body: JSON.stringify({ credentials }),
             headers: { "Content-Type": "application/json" },
           }
         );
         const user = await res.json();
-
         if (res.status === 200) {
           console.log("user", user);
           return user;

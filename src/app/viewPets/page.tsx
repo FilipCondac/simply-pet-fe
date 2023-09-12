@@ -25,10 +25,12 @@ export default function ViewPets(): React.ReactElement {
   const [petData, setPetData] = useState<PetData[]>([]);
   const [loading, setLoading] = useState(true);
 
+  //Fetch pets using handler
   const fetchPets = async () => {
     try {
-      const response = await fetch("/viewPets/api");
+      const response = await fetch("/api/viewPets");
       const petData = await response.json();
+      console.log(petData);
       setPetData(petData);
       setLoading(false);
     } catch (error) {

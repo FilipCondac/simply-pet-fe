@@ -5,6 +5,7 @@ import { useMultistepForm } from "../util/useMultistepForm";
 import PetDetailsForm from "./components/form/PetDetailsForm";
 import PetMedicalForm from "./components/form/PetMedicalForm";
 import PetVetDetailsForm from "./components/form/PetVetDetailsForm";
+import { useRouter } from "next/navigation";
 
 type FormData = {
   name: string;
@@ -47,6 +48,8 @@ type MedicalEntry = {
 };
 
 export default function CreatePet(): React.ReactElement {
+  const router = useRouter();
+
   const [data, setData] = useState(INITIAL_DATA);
 
   useEffect(() => {
@@ -85,18 +88,21 @@ export default function CreatePet(): React.ReactElement {
       <PetVetDetailsForm {...data} updateFields={updateFields} />,
     ]);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!isLastStep) return next();
 
     try {
-      fetch("/createPet/api", {
+      const res = await fetch("/api/createPet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ data }),
       });
+      if (res.redirected) {
+        router.push(res.url);
+      }
     } catch (error) {
       console.error("An error occurred while creating the pet:", error);
     }

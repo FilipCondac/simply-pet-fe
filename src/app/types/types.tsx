@@ -1,4 +1,4 @@
-export interface User {
+export interface UserInterface {
   firstName: string;
   lastName: string;
   email: string;
@@ -8,7 +8,7 @@ export interface User {
   petIDs: string[]; //Watch out for this one
 }
 
-export interface Vet {
+export interface VetInterface {
   firstName: string;
   lastName: string;
   username: string;
@@ -18,4 +18,22 @@ export interface Vet {
   clinicName: string;
   clinicAddress: string;
   clinicPhoneNumber: string;
+}
+
+export interface PetInterface {
+  name: string;
+  familyName: string;
+  species: string;
+  breed: string;
+  age: string;
+  weight: string;
+  medicalHistory: MedicalEntry[];
+  userID: string;
+  vetID: string;
+}
+
+export interface MedicalEntry {
+  date: string;
+  description: string;
+  treatment: string;
 }

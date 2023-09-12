@@ -1,7 +1,6 @@
 "use client";
 import React, { FormEvent } from "react";
 import { useState } from "react";
-import { registerUser } from "../util/registerUser";
 import { User, Vet } from "../types/types";
 
 export default function Register() {
@@ -32,10 +31,32 @@ export default function Register() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (isVet) {
-      const res = await registerUser(vetDetails, true);
+      const isVet = true;
+      const data = {
+        ...vetDetails, // spread vetDetails to include all its properties
+        isVet, // include the accountType
+      };
+      const res = await fetch("api/user/registerUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data }),
+      });
       console.log(res);
     } else {
-      const res = await registerUser(userDetails, false);
+      const isVet = false;
+      const data = {
+        ...userDetails, // spread userDetails to include all its properties
+        isVet, // include the accountType
+      };
+      const res = await fetch("api/user/registerUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data }),
+      });
       console.log(res);
     }
   };
