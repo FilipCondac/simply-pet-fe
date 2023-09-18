@@ -12,26 +12,28 @@ export default async function Navbar(): Promise<React.ReactElement> {
   console.log(session);
 
   return (
-    <nav className="flex bg-gradient-to-r from-primary to-secondary fixed top-0 w-full z-50 shadow-lg ">
-      <div className="flex w-full my-auto text-white">
-        <Link href="/" className=" flex">
-          <img
-            className="w-12 h-12"
-            src="./logo.svg"
-            alt="Simply Pet logo"
-          ></img>{" "}
-          <h1 className="my-auto font-bold text-2xl">SIMPLY PET</h1>
+    <nav className="flex bg-gradient-to-r text-white from-primary to-secondary fixed top-0 w-full z-50 shadow-lg ">
+      <div className="flex w-1/3">
+        <Link href="/">
+          <span className="flex items-center">
+            <img className="w-12 h-12" src="./logo.svg" alt="Simply Pet logo" />
+            <h1 className="ml-2 my-auto font-bold text-2xl">SIMPLY PET</h1>
+          </span>
         </Link>
+      </div>
+
+      <div className="flex w-1/3 justify-center">
         <PageLinks />
+      </div>
+
+      <div className="flex w-1/3 justify-end mr-5 my-auto">
         {!session ? (
-          <div className="flex ml-auto mr-5 my-auto">
+          <>
             <SignupButton />
             <SigninButton />
-          </div>
+          </>
         ) : (
-          <div className="flex ml-auto mr-5 my-auto">
-            <SignoutButton />
-          </div>
+          <SignoutButton />
         )}
       </div>
     </nav>

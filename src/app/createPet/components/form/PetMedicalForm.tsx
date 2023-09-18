@@ -47,32 +47,38 @@ export default function PetMedicalForm({
     <FormWrapper title="Medical History">
       <div>
         {medicalHistory.map((entry, index) => (
-          <div key={index} className="border border-black mb-5 p-2">
-            <label>Date:</label>
-            <input
-              type="date"
-              name="date"
-              value={entry.date}
-              onChange={(event) => handleInputChange(index, event)}
-              required
-            />
-
-            <label>Description:</label>
-            <textarea
-              name="description"
-              value={entry.description}
-              onChange={(event) => handleInputChange(index, event)}
-              required
-            />
-
-            <label>Treatment:</label>
-            <textarea
-              className="border border-black ml-2"
-              name="treatment"
-              value={entry.treatment}
-              onChange={(event) => handleInputChange(index, event)}
-              required
-            />
+          <div key={index} className="flex-col border border-black mb-5 p-4">
+            <div className="flex mb-5">
+              <label className="w-1/4">Date:</label>
+              <input
+                type="date"
+                name="date"
+                className="border border-black ml-2 w-3/4"
+                value={entry.date}
+                onChange={(event) => handleInputChange(index, event)}
+                required
+              />
+            </div>
+            <div className="flex mb-5">
+              <label className="w-1/4">Description:</label>
+              <textarea
+                name="description"
+                value={entry.description}
+                className="border border-black ml-2 w-3/4"
+                onChange={(event) => handleInputChange(index, event)}
+                required
+              />
+            </div>
+            <div className="flex">
+              <label className="w-1/4">Treatment:</label>
+              <textarea
+                className="border border-black ml-2 w-3/4"
+                name="treatment"
+                value={entry.treatment}
+                onChange={(event) => handleInputChange(index, event)}
+                required
+              />
+            </div>
           </div>
         ))}
       </div>

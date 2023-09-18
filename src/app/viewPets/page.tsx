@@ -44,7 +44,6 @@ export default function ViewPets(): React.ReactElement {
 
   return (
     <>
-      <h2 className="text-center text-3xl font-extrabold mt-16">My Pets</h2>
       {loading ? (
         <div className="loader m-auto"></div>
       ) : (

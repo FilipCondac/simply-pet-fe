@@ -109,21 +109,23 @@ export default function CreatePet(): React.ReactElement {
   };
 
   return (
-    <div className="relative bg-white border border-black p-2 m-1  text-black my-auto  w-1/2 mx-auto">
-      <form className="flex flex-col" onSubmit={onSubmit}>
-        <div className=" absolute top-1 right-1">
-          {currentStepIndex + 1} / {steps.length}
-        </div>
-        {step}
-        <div className="m-1 flex gap-1 justify-end">
-          {isFirstStep && (
-            <button onClick={back} type="button">
-              Back
-            </button>
-          )}
-          <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
-        </div>
-      </form>
-    </div>
+    <section className="flex flex-col min-h-screen bg-gradient-to-r from-secondary to-white">
+      <div className="relative bg-white  border-primary border border-b-4 p-2 m-1 text-black my-auto w-1/2 mx-auto  mt-20 mb-5">
+        <form className="flex flex-col" onSubmit={onSubmit}>
+          <div className=" absolute top-1 right-1">
+            {currentStepIndex + 1} / {steps.length}
+          </div>
+          {step}
+          <div className="m-1 flex gap-1 justify-end">
+            {isFirstStep && (
+              <button onClick={back} type="button">
+                Back
+              </button>
+            )}
+            <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }

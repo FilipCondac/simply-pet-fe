@@ -3,7 +3,7 @@ import React from "react";
 
 export default function SignupButton(): React.ReactElement {
   return (
-    <Link href="/register" className="mr-5">
+    <Link href="/register" className="mr-5 ">
       Sign Up
     </Link>
   );

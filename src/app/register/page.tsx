@@ -47,7 +47,7 @@ export default function Register() {
     } else {
       const isVet = false;
       const data = {
-        ...userDetails, // spread userDetails to include all its properties
+        ...userDetails,
         isVet, // include the accountType
       };
       const res = await fetch("api/user/registerUser", {
@@ -78,22 +78,20 @@ export default function Register() {
       <div className="relative flex flex-col items-center min-h-screen bg-gray-800 bg-opacity-40">
         <div className="flex items-center justify-center  mb-5">
           <label className="flex  flex-col items-center cursor-pointer">
-            <h1 className="text-white font-bold text-2xl mt-4">Account Type</h1>
-            <div className="relative flex mt-5">
-              <input
-                type="checkbox"
-                className="sr-only"
-                checked={isVet}
-                onChange={() => setIsVet(!isVet)}
-              />
-              <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
-              <div
-                className={`dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition  ${
-                  isVet ? "transform translate-x-full" : ""
-                }`}
-              ></div>
-              <div className="ml-3 text-white font-medium ">
-                {isVet ? "Vet" : "Pet Owner"}
+            <div className="flex w-full mt-16">
+              <div className="relative flex mt-5 ">
+                <input
+                  type="checkbox"
+                  className="sr-only"
+                  checked={isVet}
+                  onChange={() => setIsVet(!isVet)}
+                />
+                <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
+                <div
+                  className={`dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition  ${
+                    isVet ? "transform translate-x-full" : ""
+                  }`}
+                ></div>
               </div>
             </div>
           </label>
@@ -249,7 +247,7 @@ export default function Register() {
 
             {isVet && (
               <div className="flex-col">
-                <h1 className="text-2xl font-bold mb-2 mt-5 text-white font-semibold">
+                <h1 className="text-2xl  mb-2 mt-5 text-white font-semibold">
                   Clinic Details
                 </h1>
                 <div className="flex flex-col gap-2">
