@@ -9,7 +9,6 @@ import Link from "next/link";
 
 export default async function Navbar(): Promise<React.ReactElement> {
   const session = await getServerSession(options);
-  console.log(session);
 
   return (
     <nav className="flex bg-gradient-to-r text-white from-primary to-secondary fixed top-0 w-full z-50 shadow-lg ">

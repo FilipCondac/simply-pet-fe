@@ -21,6 +21,7 @@ export interface VetInterface {
 }
 
 export interface PetInterface {
+  _id: string;
   name: string;
   familyName: string;
   species: string;

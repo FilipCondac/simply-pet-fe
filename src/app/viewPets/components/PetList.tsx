@@ -60,11 +60,11 @@ export default function PetList({ petData }: PetListProps): React.ReactElement {
           </h2>
         </div>
       ) : (
-        <div className="flex flex-wrap w-full h-screen mb-10 mt-10">
+        <div className="grid grid-cols-3 justify-items-end">
           {petData.map((pet) => (
             <article
               key={pet._id}
-              className="border border-b-4 border-primary flex-col mb-5 mr-10 m-auto w-1/4 h-1/3 p-5 overflow-scroll bg-white rounded-lg shadow-lg"
+              className="border border-b-4 border-primary flex-col m-auto px-10 py-5 bg-white rounded-lg shadow-lg w-11/12 h-3/4 overflow-y-auto"
             >
               <button
                 className="float-right cursor-pointer"
@@ -99,9 +99,11 @@ export default function PetList({ petData }: PetListProps): React.ReactElement {
               </div>
               <section>
                 <header>
-                  <p>
-                    <span className="font-bold">Medical History:</span>
-                  </p>
+                  {pet.medicalHistory.length > 0 && (
+                    <p>
+                      <span className="font-bold">Medical History:</span>
+                    </p>
+                  )}
                 </header>
                 {pet.medicalHistory.map((entry, index) => (
                   <div

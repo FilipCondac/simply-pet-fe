@@ -29,10 +29,8 @@ export const options: NextAuthOptions = {
         );
         const user = await res.json();
         if (res.status === 200) {
-          console.log("user", user);
           return user;
         } else {
-          console.log("Invalid credentials");
           return null;
         }
       },
